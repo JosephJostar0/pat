@@ -61,26 +61,24 @@ int main() {
 		A = B;
 		B = v;
 	}
-	if (A.size() >= 2 * B.size()) {
-		v.clear();
-		it = A.begin();
-		while (B.size() > 0) {
-			v.push_back(*it);
-			it++;
-			v.push_back(*it);
-			it++;
-			v.push_back(B[B.size() - 1]);
-			B.pop_back();
-		}
-		while (it != A.end()) {
-			v.push_back(*it);
-			it++;
-		}
-		for (it = v.begin(); it != (v.begin() + v.size() - 1); it++) {
-			cout << (*it).adress << ' ' << (*it).data << ' '
-				<< (*(it + 1)).adress << endl;
-		}
-		cout << (*it).adress << ' ' << (*it).data << ' ' << -1 << endl;
+	v.clear();
+	it = A.begin();
+	while (B.size() > 0) {
+		v.push_back(*it);
+		it++;
+		v.push_back(*it);
+		it++;
+		v.push_back(B[B.size() - 1]);
+		B.pop_back();
 	}
+	while (it != A.end()) {
+		v.push_back(*it);
+		it++;
+	}
+	for (it = v.begin(); it != (v.begin() + v.size() - 1); it++) {
+		cout << (*it).adress << ' ' << (*it).data << ' '
+			<< (*(it + 1)).adress << endl;
+	}
+	cout << (*it).adress << ' ' << (*it).data << ' ' << -1 << endl;
 	return 0;
 }
