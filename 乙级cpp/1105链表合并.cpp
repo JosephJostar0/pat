@@ -4,14 +4,9 @@
 using namespace std;
 class Link {
 public:
-	string adress;
+	string address;
 	string next;
 	int data;
-	void set(string a, int d, string n) {
-		adress = a;
-		data = d;
-		next = n;
-	}
 };
 
 int main() {
@@ -19,66 +14,56 @@ int main() {
 	int N;
 	vector<Link> v, A, B;
 	Link link;
-	string ad, n;
-	int d;
+	int i;
 	cin >> a >> b >> N;
-	for (int i = 0; i < N; i++) {
-		cin >> ad >> d >> n;
-		link.set(ad, d, n);
-		if (ad == a) {
+	for (i = 0; i < N; i++) {
+		cin >> link.address >> link.data >> link.next;
+		if (link.address == a) {
 			A.push_back(link);
-			a = n;
+			a = link.next;
 		}
-		else if (ad == b) {
+		else if (link.address == b) {
 			B.push_back(link);
-			b = n;
+			b = link.next;
 		}
 		else
 			v.push_back(link);
 	}
 	vector<Link>::iterator it = v.begin();//用迭代器实现
-	while (v.size() > 0 && (a != "-1" || b != "-1")) {
-		while (it != v.end()) {
-			if ((*it).adress == a) {
-				A.push_back(*it);
-				a = (*it).next;
-				v.erase(it);
-				it = v.begin();
-			}
-			else if ((*it).adress == b) {
-				B.push_back(*it);
-				b = (*it).next;
-				v.erase(it);
-				it = v.begin();
-			}
-			else
-				it++;
+	while (a != "-1" || b != "-1") {
+		if ((*it).address == a) {
+			A.push_back(*it);
+			a = (*it).next;
+			it = v.begin();
 		}
-		it = v.begin();
+		else if ((*it).address == b) {
+			B.push_back(*it);
+			b = (*it).next;
+			it = v.begin();
+		}
+		else
+			it++;
 	}
 	if (A.size() < B.size()) {
 		v = A;
 		A = B;
 		B = v;
 	}
-	v.clear();
-	it = A.begin();
-	while (B.size() > 0) {
-		v.push_back(*it);
+	for (i = B.size() - 1, it = A.begin(); i >= 0; i--) {
+		cout << (*it).address << ' ' << (*it).data << ' ' << (*(it + 1)).address << endl;
 		it++;
-		v.push_back(*it);
+		cout << (*it).address << ' ' << (*it).data << ' ' << B[i].address << endl;
 		it++;
-		v.push_back(B[B.size() - 1]);
-		B.pop_back();
+		if (it != A.end())
+			cout << B[i].address << ' ' << B[i].data << ' ' << (*it).address << endl;
+		else
+			cout << B[i].address << ' ' << B[i].data << ' ' << "-1\n";
 	}
-	while (it != A.end()) {
-		v.push_back(*it);
-		it++;
+	if (it != A.end()) {
+		cout << (*it).address << ' ' << (*it).data << ' ';
+		for (it++; it != A.end(); it++)
+			cout << (*it).address << endl << (*it).address << ' ' << (*it).data << ' ';
+		cout << -1 << endl;
 	}
-	for (it = v.begin(); it != (v.begin() + v.size() - 1); it++) {
-		cout << (*it).adress << ' ' << (*it).data << ' '
-			<< (*(it + 1)).adress << endl;
-	}
-	cout << (*it).adress << ' ' << (*it).data << ' ' << -1 << endl;
 	return 0;
 }
