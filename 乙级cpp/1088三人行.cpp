@@ -12,13 +12,13 @@ void print(double a){
 }
 
 int main(){
-    int a, b, c;
-    double d;
+    int a, b;
+    double c;
     cin>>M>>X>>Y;
     for(a=99; a>=10; a--){
         b = a%10*10 + a/10;
-        d = (double)b/(double)Y;
-        if(d*X == abs(a-b))
+        c = (double)b/(double)Y;
+        if(c*X == abs(a-b))
             break;
     }
     if(a < 10)
@@ -27,7 +27,7 @@ int main(){
         cout<<a;
         print(a);
         print(b);
-        print(d);
+        print(c);
     }
     return 0;
 }
