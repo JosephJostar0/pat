@@ -3,14 +3,14 @@
 #include <string>
 #include <vector>
 using namespace std;
-class Man {
+class Master {
 public:
     string id;
     int    virtue;
     int    talent;
 };
 
-bool cmp(Man a, Man b) {
+bool cmp(Master a, Master b) {
     int sum_a = a.talent + a.virtue;
     int sum_b = b.talent + b.virtue;
     if (sum_a == sum_b) {
@@ -22,10 +22,10 @@ bool cmp(Man a, Man b) {
 }
 
 int main() {
-    int         N, L, H;
-    Man         man;
-    vector<Man> list[4];
-    int         i, j;
+    int            N, L, H;
+    Master         man;
+    vector<Master> list[4];
+    int            i, j;
     cin >> N >> L >> H;
     for (i = 0; i < N; i++) {
         cin >> man.id >> man.virtue >> man.talent;
