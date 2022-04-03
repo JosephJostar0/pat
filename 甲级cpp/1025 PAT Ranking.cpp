@@ -1,11 +1,12 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+using namespace std;
 class Student {
 public:
-    std::string no;
-    int         grade;
-    int         part;
+    string no;
+    int    grade;
+    int    part;
 };
 
 bool cmp(Student a, Student b) {
@@ -15,12 +16,12 @@ bool cmp(Student a, Student b) {
 }
 
 int main() {
-    std::vector<Student> list;
-    std::vector<int>     rank, high, count;
-    std::string          no;
-    Student              stu;
-    int                  N, K;
-    int                  i, j, grade, last, level = 1;
+    vector<Student> list;
+    vector<int>     rank, high, count;
+    string          no;
+    Student         stu;
+    int             N, K;
+    int             i, j, grade, last, level = 1;
     scanf("%d", &N);
     for (i = 0; i < N; i++) {
         scanf("%d", &K);
@@ -37,7 +38,7 @@ int main() {
             list.push_back(stu);
         }
     }
-    std::sort(list.begin(), list.end(), cmp);
+    sort(list.begin(), list.end(), cmp);
     printf("%d\n", list.size());
     for (i = 0, last = list[0].grade; i < list.size(); i++) {
         count[list[i].part - 1]++;
