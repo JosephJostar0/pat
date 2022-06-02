@@ -7,13 +7,13 @@ int main() {
     scanf("%lld", &N);
     num = N;
     for (i = 2; i <= N; i++) {
-        while (i < N && N % i == 0) {
+        while (N % i == 0) {
             N /= i;
             factor[i]++;
         }
     }
-    if (N > 1 || num == 1)
-        factor[N]++;
+    if (num == 1)
+        factor[num]++;
     auto it = factor.begin();
     printf("%lld=%lld", num, it->first);
     if (it->second > 1)
