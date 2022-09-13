@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 int main() {
-    int       T, i;
+    int T, i;
     long long a, b, c, d;
     scanf("%d", &T);
     for (i = 1; i <= T; i++) {
