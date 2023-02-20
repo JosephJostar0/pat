@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
-std::vector<int> v[11], out, pre;
+std::vector<int> v[11], pre;
 int have[100001], lose[11], cnt;
 bool check(int num) {
     if (have[num])
@@ -30,7 +30,7 @@ int main() {
                 continue;
             num = v[i][j];
             if (!check(num)) {
-                lose[i] = 1, out.push_back(i), cnt++;
+                lose[i] = 1, cnt++;
                 printf("Round #%d: %d is out.\n", j + 1, i);
             } else
                 pre.push_back(num), have[num] = 1;
