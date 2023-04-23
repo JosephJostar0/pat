@@ -4,13 +4,10 @@
 int N, pre[MAXN], temp, step;
 std::unordered_map<int, int> alter_in;
 int make_tree(int l = 0, int r = N) {
-    if (l >= r)
+    if (l == r)
         return -1;
-    int root = pre[step];
+    int root = pre[step++];
     int root_id = alter_in[root];
-    if (root_id < l || root_id >= r)
-        return -1;
-    step++;
     int lson = make_tree(l, root_id);
     int rson = make_tree(root_id + 1, r);
     if (lson == rson && rson == -1) {
